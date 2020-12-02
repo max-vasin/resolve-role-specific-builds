@@ -11,36 +11,29 @@ import {
   exportEventStore,
 } from 'resolve-scripts'
 
-import appConfig from './config.app'
-import cloudConfig from './config.cloud'
-import devConfig from './config.dev'
-import prodConfig from './config.prod'
-import testFunctionalConfig from './config.test-functional'
+import webClientNodeConfig from './config.web-client-node'
+import commandNodeConfig from './config.command-node'
+import queryNodeConfig from './config.query-node'
+
+import platformConfig from './config.platform'
 
 const launchMode = process.argv[2]
 
 void (async () => {
   try {
     switch (launchMode) {
-      case 'dev': {
-        const resolveConfig = merge(defaultResolveConfig, appConfig, devConfig)
-        await watch(resolveConfig)
+      case 'build-command-node': {
+        await build(merge(defaultResolveConfig, commandNodeConfig, platformConfig))
         break
       }
 
-      case 'build': {
-        const resolveConfig = merge(defaultResolveConfig, appConfig, prodConfig)
-        await build(resolveConfig)
+      case 'build-query-node': {
+        await build(merge(defaultResolveConfig, queryNodeConfig, platformConfig))
         break
       }
 
-      case 'cloud': {
-        await build(merge(defaultResolveConfig, appConfig, cloudConfig))
-        break
-      }
-
-      case 'start': {
-        await start(merge(defaultResolveConfig, appConfig, prodConfig))
+      case 'build-web-client-node': {
+        await start(merge(defaultResolveConfig, webClientNodeConfig, platformConfig))
         break
       }
 
