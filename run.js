@@ -23,7 +23,11 @@ void (async () => {
   try {
     switch (launchMode) {
       case 'build-command-node': {
-        await build(merge(defaultResolveConfig, commandNodeConfig, platformConfig))
+        const platform = {
+          ...platformConfig
+        }
+        delete platform.readModelConnectors
+        await build(merge(defaultResolveConfig, commandNodeConfig, platform))
         break
       }
 

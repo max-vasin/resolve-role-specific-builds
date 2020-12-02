@@ -4,9 +4,9 @@
   "private": true,
   "description": "used as a template for new reSolve applications",
   "scripts": {
-    "build": "babel-node ./run.js build",
-    "cloud": "babel-node ./run.js cloud",
-    "dev": "babel-node ./run.js dev",
+    "build-command-node": "babel-node ./run.js build-command-node",
+    "build-query-node": "babel-node ./run.js build-query-node",
+    "build-web-client-node": "babel-node ./run.js build-web-client-node",
     "export-event-store": "babel-node ./run.js export-event-store",
     "import-event-store": "babel-node ./run.js import-event-store",
     "start": "babel-node ./run.js start",
