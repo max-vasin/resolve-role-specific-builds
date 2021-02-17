@@ -1,0 +1,15 @@
+name: Build
+
+on:
+  push:
+    branches: [ main* ]
+  pull_request:
+    branches: [ main* ]
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        uses: reimagined/github-actions/publish@v1
+
